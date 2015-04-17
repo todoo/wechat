@@ -1,0 +1,14 @@
+cn.com.wechat.access
+cn.com.wechat.api.account
+cn.com.wechat.api.base
+cn.com.wechat.api.js
+cn.com.wechat.api.media
+cn.com.wechat.api.menu
+cn.com.wechat.api.sendmsg
+cn.com.wechat.api.user
+cn.com.wechat.config
+cn.com.wechat.message
+cn.com.wechat.message.crypt
+cn.com.wechat.message.factory
+cn.com.wechat.message.handler
+cn.com.wechat.pojo
