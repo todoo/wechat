@@ -1,0 +1,53 @@
+<config>
+	<base>
+		<token>wechat</token>
+		<encodingAESKey>b</encodingAESKey>
+		<appID>aaa</appID>
+		<appSecret>bbb</appSecret>
+	</base>
+	<!-- 基础接口 -->
+	<baseAPI>
+		<accessToken>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential</accessToken>
+		<callbackIP>https://api.weixin.qq.com/cgi-bin/getcallbackip</callbackIP>
+	</baseAPI>
+	<!-- 发送消息接口 -->
+	<sendMsg>
+		<!-- 发送客服消息 -->
+		<customSend>https://api.weixin.qq.com/cgi-bin/message/custom/send</customSend>
+	</sendMsg>
+	<!-- 素材管理接口 -->
+	<media>
+		<!-- 新增临时素材 -->
+		<uploadTempMedia>https://api.weixin.qq.com/cgi-bin/media/upload</uploadTempMedia>
+		<!-- 获取临时素材 -->
+		<getTempMedia>https://api.weixin.qq.com/cgi-bin/media/get</getTempMedia>
+		<!-- 新增永久素材 -->
+		<uploadMedia>http://api.weixin.qq.com/cgi-bin/material/add_material</uploadMedia>
+		<!-- 获取永久素材  -->
+		<getMedia>https://api.weixin.qq.com/cgi-bin/material/get_material</getMedia>
+		<!-- 获取永久素材总数 -->
+		<getMediaCount>https://api.weixin.qq.com/cgi-bin/material/get_materialcount</getMediaCount>
+		<!-- 删除永久素材 -->
+		<deleteMedia>https://api.weixin.qq.com/cgi-bin/material/del_material</deleteMedia>
+	</media>
+	<!-- 用户管理接口 -->
+	<user>
+		<getUserInfo>https://api.weixin.qq.com/cgi-bin/user/info</getUserInfo>
+	</user>
+	<!-- 自定义菜单 -->
+	<menu>
+		<createMenu>https://api.weixin.qq.com/cgi-bin/menu/create</createMenu>
+	</menu>
+	<!-- 账号管理接口 -->
+	<account>
+		<!-- 创建带参数的二维码 -->
+		<createQrcode>https://api.weixin.qq.com/cgi-bin/qrcode/create</createQrcode>
+		<!-- 通过ticket换取二维码 -->
+		<getQrcode>https://mp.weixin.qq.com/cgi-bin/showqrcode</getQrcode>
+	</account>
+	<!-- js-jdk -->
+	<js>
+		<!-- 获取js-sdk ticket -->
+		<getJsTicket>https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi</getJsTicket>
+	</js>
+</config>
