@@ -76,10 +76,4 @@ public class ViewEventWechatMessage extends EventWechatMessage {
 		}
 	}
 
-	@Override
-	public String getReplyXmlData() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

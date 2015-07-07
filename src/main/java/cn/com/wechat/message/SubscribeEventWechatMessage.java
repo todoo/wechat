@@ -75,9 +75,13 @@ public class SubscribeEventWechatMessage extends EventWechatMessage {
 				throw new Exception();
 			}
 			NodeList eventKeyList = root.getElementsByTagName("EventKey");
-			this.eventKey = eventKeyList.item(0).getTextContent();
+			if (eventKeyList.getLength()>0) {
+				this.eventKey = eventKeyList.item(0).getTextContent();
+			}
 			NodeList ticketList = root.getElementsByTagName("Ticket");
-			this.ticket = ticketList.item(0).getTextContent();
+			if (ticketList.getLength()>0) {
+				this.ticket = ticketList.item(0).getTextContent();
+			}
 			
 			return true;
 		} catch (Exception e) {
@@ -85,12 +89,6 @@ public class SubscribeEventWechatMessage extends EventWechatMessage {
 			//xml数据解析有误，格式不正确
 			return false;
 		}
-	}
-
-	@Override
-	public String getReplyXmlData() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

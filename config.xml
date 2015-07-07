@@ -4,6 +4,7 @@
 		<encodingAESKey>b</encodingAESKey>
 		<appID>aaa</appID>
 		<appSecret>bbb</appSecret>
+		<serverRootUrl>http://127.0.0.1</serverRootUrl>
 	</base>
 	<!-- 基础接口 -->
 	<baseAPI>
@@ -33,6 +34,8 @@
 	<!-- 用户管理接口 -->
 	<user>
 		<getUserInfo>https://api.weixin.qq.com/cgi-bin/user/info</getUserInfo>
+		<!-- 获取用户授权的access_tolen -->
+		<getAccessToken>https://api.weixin.qq.com/sns/oauth2/access_token?grant_type=authorization_code</getAccessToken>
 	</user>
 	<!-- 自定义菜单 -->
 	<menu>

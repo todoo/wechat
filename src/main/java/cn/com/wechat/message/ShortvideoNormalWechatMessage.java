@@ -89,4 +89,10 @@ public class ShortvideoNormalWechatMessage extends NormalWecahtMessage {
 		return null;
 	}
 
+	@Override
+	public String getCustomSendMsgJson() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

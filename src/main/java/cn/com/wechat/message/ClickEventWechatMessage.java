@@ -76,10 +76,4 @@ public class ClickEventWechatMessage extends EventWechatMessage {
 		}
 	}
 
-	@Override
-	public String getReplyXmlData() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -21,6 +21,7 @@ public class WechatConfig {
 	private String encodingAESKey;
 	private String appID;
 	private String appSecret;
+	private String serverRootUrl;
 	
 	private String urlGetBaseapiAccessToken;
 	private String urlGetBaseapiCallbackIp;
@@ -35,6 +36,7 @@ public class WechatConfig {
 	private String urlPostMediaapiDeleteMedia;
 	
 	private String urlGetUserapiGetUserInfo;
+	private String urlGetUserapiGetAccessToken;
 	
 	private String urlPostMenuapiCreateMenu;
 	
@@ -78,6 +80,9 @@ public class WechatConfig {
 				
 				NodeList appSecret = base.getElementsByTagName("appSecret");
 				WechatConfig.CONFIG.appSecret = appSecret.item(0).getTextContent();
+
+				NodeList serverRootUrl = base.getElementsByTagName("serverRootUrl");
+				WechatConfig.CONFIG.serverRootUrl = serverRootUrl.item(0).getTextContent();
 				
 				//baseAPI
 				NodeList baseAPIList = root.getElementsByTagName("baseAPI");
@@ -124,6 +129,9 @@ public class WechatConfig {
 				
 				NodeList getUserInfoList = userAPI.getElementsByTagName("getUserInfo");
 				WechatConfig.CONFIG.urlGetUserapiGetUserInfo = getUserInfoList.item(0).getTextContent();
+
+				NodeList getAccessTokenList = userAPI.getElementsByTagName("getAccessToken");
+				WechatConfig.CONFIG.urlGetUserapiGetAccessToken = getAccessTokenList.item(0).getTextContent();
 				
 				//menuAPI
 				NodeList menuAPIList = root.getElementsByTagName("menu");
@@ -174,6 +182,10 @@ public class WechatConfig {
 		return appSecret;
 	}
 
+	public String getServerRootUrl() {
+		return serverRootUrl;
+	}
+
 	public String getUrlGetBaseapiAccessToken() {
 		return urlGetBaseapiAccessToken;
 	}
@@ -212,6 +224,10 @@ public class WechatConfig {
 
 	public String getUrlGetUserapiGetUserInfo(String accessToken, String openid, String lang) {
 		return urlGetUserapiGetUserInfo+ "?access_token=" + accessToken + "&openid=" + openid + "&lang=" + lang;
+	}
+
+	public String getUrlGetUserapiGetAccessToken(String code) {
+		return urlGetUserapiGetAccessToken + "&appid=" + this.appID + "&secret=" + this.appSecret + "&code=" + code;
 	}
 
 	public String getUrlPostMenuapiCreateMenu(String accessToken) {

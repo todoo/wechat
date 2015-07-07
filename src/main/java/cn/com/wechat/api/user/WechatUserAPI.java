@@ -98,4 +98,42 @@ public class WechatUserAPI {
 		}
 		return null;
 	}
+
+	/**
+	 * 获取用户授权token
+	 * @param code
+	 * @return
+		{
+		   "access_token":"ACCESS_TOKEN",
+		   "expires_in":7200,
+		   "refresh_token":"REFRESH_TOKEN",
+		   "openid":"OPENID",
+		   "scope":"SCOPE",
+		   "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+		}
+		失败：null
+	 */
+	public JSONObject getAccessToken(String code) {
+		try {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpGet request = new HttpGet(config.getUrlGetUserapiGetAccessToken(code));
+			HttpResponse response = httpclient.execute(request);  
+			if (response.getStatusLine().getStatusCode()==200) { 
+				String strResult = EntityUtils.toString(response.getEntity(),"UTF-8");
+				JSONObject result = new JSONObject(strResult); 
+				if (result.has("errcode")) {
+					System.out.println(result.toString());
+					return null;
+				}
+				
+				return result;
+			} else {
+				System.out.println("http get请求失败:status=" + response.getStatusLine().getStatusCode());
+			}
+		} catch (Exception e) {
+			System.out.println("获取用户授权access_token失败");
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

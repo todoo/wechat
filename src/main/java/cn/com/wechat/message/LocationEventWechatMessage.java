@@ -97,11 +97,4 @@ public class LocationEventWechatMessage extends EventWechatMessage {
 			return false;
 		}
 	}
-
-	@Override
-	public String getReplyXmlData() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

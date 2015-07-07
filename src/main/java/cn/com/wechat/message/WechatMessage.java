@@ -21,6 +21,7 @@ public abstract class WechatMessage implements Serializable{
 	public static final String MSG_TYPE_NORMAL_SHORTVIDEO = "shortvideo";
 	public static final String MSG_TYPE_NORMAL_LOCATION = "location";
 	public static final String MSG_TYPE_NORMAL_LINK = "link";
+	public static final String MSG_TYPE_NORMAL_NEWS = "news";
 	public static final String MSG_TYPE_EVENT_EVENT = "event";
 	
 	public static final String MSG_EVENT_TYPE_SUBSCRIBE = "subscribe";
@@ -67,11 +68,4 @@ public abstract class WechatMessage implements Serializable{
 	 * @return true:xml格式正确; false:xml数据格式不正确
 	 */
 	public abstract boolean setReceiveXmlData(String xmlData);
-	
-	/**
-	 * 获取回复消息对象的xml数据
-	 * 根据微信实际情况，有些消息没有回复消息，始终返回null，例如事件消息
-	 * @return 成功：回复微信消息的xml字符串；失败：null
-	 */
-	public abstract String getReplyXmlData();
 }

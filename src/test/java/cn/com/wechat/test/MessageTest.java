@@ -1,5 +1,6 @@
 package cn.com.wechat.test;
 
+import cn.com.wechat.message.ArticleNormalWechatMessage;
 import cn.com.wechat.message.ImageNormalWechatMessage;
 import cn.com.wechat.message.SubscribeEventWechatMessage;
 import cn.com.wechat.message.TextNormalWechatMessage;
@@ -9,6 +10,7 @@ import cn.com.wechat.message.WechatMessage;
 import cn.com.wechat.message.factory.EventWechatMessageFactory;
 import cn.com.wechat.message.factory.NormalWechatMessageFactory;
 import cn.com.wechat.message.factory.WechatMessageFactory;
+import cn.com.wechat.pojo.Article;
 
 public class MessageTest {
 	public static void main(String[] args) {
@@ -16,7 +18,8 @@ public class MessageTest {
 		//imageMessage();
 		//voiceMessage();
 		//videoMessage();
-		subscribeMessage();
+		//subscribeMessage();
+		articleMessage();
 	}
 	
 	public static void textMessage() {
@@ -90,5 +93,25 @@ public class MessageTest {
 		WechatMessageFactory factory = new EventWechatMessageFactory();
 		SubscribeEventWechatMessage message = (SubscribeEventWechatMessage)factory.createReceiveWechatMessage(xmlData);
 		System.out.println(message.getEventKey());
+	}
+	
+	public static void articleMessage() {
+		WechatMessageFactory factory = new NormalWechatMessageFactory();
+		ArticleNormalWechatMessage articles = (ArticleNormalWechatMessage) factory.createReplyWechatMessage(WechatMessage.MSG_TYPE_NORMAL_NEWS);
+		Article article1 = new Article();
+		article1.setTitle("1");
+		article1.setUrl("1");
+		Article article2 = new Article();
+		article2.setTitle("2");
+		article2.setUrl("2");
+		Article article3 = new Article();
+		article3.setTitle("3");
+		article3.setUrl("3");
+		article3.setPicUrl("3");
+		articles.addArticle(article1, false);
+		articles.addArticle(article2, false);
+		articles.addArticle(article3, true);
+		System.out.println(articles.getReplyXmlData());
+		System.out.println(articles.getCustomSendMsgJson());
 	}
 }

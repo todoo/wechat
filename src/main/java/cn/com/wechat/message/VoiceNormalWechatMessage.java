@@ -5,11 +5,13 @@ import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -140,6 +142,7 @@ public class VoiceNormalWechatMessage extends NormalWecahtMessage {
 			//将document转换为xml字符串
 			TransformerFactory transFactory = TransformerFactory.newInstance();
 	        Transformer transFormer = transFactory.newTransformer();
+	        transFormer.setOutputProperty(OutputKeys.ENCODING, System.getProperty("sun.jnu.encoding"));
 	        DOMSource domSource = new DOMSource(document);
 	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
 	        transFormer.transform(domSource, new StreamResult(bos));
@@ -150,6 +153,23 @@ public class VoiceNormalWechatMessage extends NormalWecahtMessage {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public String getCustomSendMsgJson() {
+		try {
+			JSONObject voice = new JSONObject();
+			voice.put("media_id", this.mediaID);
+			
+			JSONObject json = new JSONObject();
+			json.put("touser", this.toUserName);
+			json.put("msgtype", this.msgType);
+			json.put("voice", voice);
+			
+			return json.toString();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

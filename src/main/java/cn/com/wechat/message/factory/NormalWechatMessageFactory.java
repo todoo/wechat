@@ -1,5 +1,6 @@
 package cn.com.wechat.message.factory;
 
+import cn.com.wechat.message.ArticleNormalWechatMessage;
 import cn.com.wechat.message.ImageNormalWechatMessage;
 import cn.com.wechat.message.LinkNormalWechatMessage;
 import cn.com.wechat.message.LocationNormalWechatMessage;
@@ -74,6 +75,9 @@ public class NormalWechatMessageFactory extends WechatMessageFactory {
 		} else if (msgType.equalsIgnoreCase(WechatMessage.MSG_TYPE_NORMAL_VIDEO)) {
 			//视屏消息
 			msg = new VideoNormalWechatMessage();
+		} else if (msgType.equalsIgnoreCase(WechatMessage.MSG_TYPE_NORMAL_NEWS)) {
+			//图文消息
+			msg = new ArticleNormalWechatMessage();
 		}
 		
 		return msg;

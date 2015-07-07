@@ -111,4 +111,10 @@ public class LocationNormalWechatMessage extends NormalWecahtMessage {
 		return null;
 	}
 
+	@Override
+	public String getCustomSendMsgJson() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
